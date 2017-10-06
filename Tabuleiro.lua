@@ -1,10 +1,15 @@
-local tabuleiro = {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}}
+local tabuleiro = {}
 
 function tabuleiro:novo()
   
-  local novo = {}
+  local novo = {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}}
   setmetatable(novo, {__index = tabuleiro})
-  self:vazio()
+  
+  for i=1, 10 do
+      for j=1, 10 do
+          novo[i][j] = "*"
+        end
+      end
   
   return novo
   
