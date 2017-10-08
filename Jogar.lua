@@ -7,6 +7,9 @@ tabuleiro = require("Tabuleiro")
  tab:inserirNavio(nav, "C", 6, "h")
  
  nav = navio:novo(5)
- tab:inserirNavio(nav, "G", 6, "h")
+ tab:inserirNavio(nav, "G", 1, "h")
+ 
+ nav = navio:novo(2)
+ tab:inserirNavio(nav, "G", 9, "v")
  
  tab:toString()

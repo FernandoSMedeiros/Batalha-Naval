@@ -21,20 +21,25 @@ end
   function tabuleiro:inserirNavio(navio, l, col, posicao)
     
     local linha = linhaR:valueOf(l)
-    local coluna = col
-    local tamanhoNavio = navio.tamanho
-    
+        
    if posicao == "h" then
-      
-      print("Entrou no IF: " .. posicao)
-      
-        for j = 1, tamanhoNavio do
-          self[linha][j+(coluna-1)] = "X"  
-          print("Entrou no FOR: " .. j)
+           
+        for j = 1, navio.tamanho do
+          self[linha][j+(col-1)] = "X"           
         end
     end 
     
+    if posicao == "v" then
+        for i = 1, navio.tamanho do
+          self[i+(linha-1)][col] = "X"           
+        end
+      end
+    
   end
+  
+  function tabuleiro:jogadaValida()
+    
+    end
   
   function tabuleiro:toString()
  
