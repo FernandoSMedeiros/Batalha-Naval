@@ -1,27 +1,38 @@
-local tabuleiro = {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}}
+local navioR = require("Navio")
+local linhaR = require("Linha")
+
+local tabuleiro = {}
 
 function tabuleiro:novo()
   
-  local novo = {}
+  local novo = {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}}
   setmetatable(novo, {__index = tabuleiro})
-  self:vazio()
+  
+  for i=1, 10 do
+      for j=1, 10 do
+          novo[i][j] = "*"
+      end
+  end
   
   return novo
   
 end
 
-function tabuleiro:vazio()
-    for i=1, 10 do
-      for j=1, 10 do
-          self[i][j] = "*"
+  function tabuleiro:inserirNavio(navio, l, col, posicao)
+    
+    local linha = linhaR:valueOf(l)
+    local coluna = col
+    local tamanhoNavio = navio.tamanho
+    
+   if posicao == "h" then
+      
+      print("Entrou no IF: " .. posicao)
+      
+        for j = 1, tamanhoNavio do
+          self[linha][j+(coluna-1)] = "X"  
+          print("Entrou no FOR: " .. j)
         end
-      end
-  end
-  
-  
-  function tabuleiro:inserirNavio(navio, posicao)
-    
-    
+    end 
     
   end
   
@@ -33,7 +44,7 @@ function tabuleiro:vazio()
     for i = 1, 10 do
      
         if i == 1 then
-          coluna = coluna ..  "  " .. i .. " "      
+          coluna = coluna ..  "  " .. i .. " "  -- Apenas adiciona dois espaços a mais para que o numero da coluna fique alinhado.    
         else
           coluna = coluna .. i .. " "
         end  
@@ -55,11 +66,6 @@ function tabuleiro:vazio()
     print(coluna)
     print(string)
   end
-  
- 
-  tabuleiro:novo()
-  tabuleiro:toString()
-  
-  tabuleiro:novo()
-  tabuleiro:toString()
+    
+return tabuleiro
   
