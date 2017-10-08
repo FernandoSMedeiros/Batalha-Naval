@@ -59,6 +59,9 @@ end
               return false          
             end          
         end
+      else
+        print("Não pode posicionar o navio aqui!")
+        return false
       end      
     end
     
