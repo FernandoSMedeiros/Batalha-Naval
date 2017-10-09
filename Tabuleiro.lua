@@ -23,14 +23,14 @@ end
     local linha = linhaR:valueOf(l)
     local posicaoValida = self:posicaoValida(navio, linha, col, posicao)
     
-   if posicao == "h" and posicaoValida then
+   if posicao == "H" and posicaoValida then
            
         for j = 1, navio.tamanho do
           self[linha][j+(col-1)] = "X"           
         end
     end 
     
-    if posicao == "v" and posicaoValida then
+    if posicao == "V" and posicaoValida then
         for i = 1, navio.tamanho do
           self[i+(linha-1)][col] = "X"           
         end
@@ -40,27 +40,28 @@ end
   
   function tabuleiro:posicaoValida(navio, l, col, posicao)
     
-    if posicao == "h" then
+    if posicao == "H" then
            
         for j = 1, navio.tamanho do
           if self[l][j+(col-1)] ~= "*" then
-            print("Não pode posicionar o navio aqui!")
+            print("Posição Invalida!")
             return false             
           end                   
         end
         
     end 
     
-    if posicao == "v" then
+    if posicao == "V" then
       if((navio.tamanho - 1) + l <=10) then
-        for i = 1, navio.tamanho do         
+        for i = 1, navio.tamanho do  
+          print(" ijoijkijhio jh " .. i+(l-1))
             if self[i+(l-1)][col] ~= "*" then  
-              print("Não pode posicionar o navio aqui!")
+              print("Posição Invalida!")
               return false          
             end          
         end
       else
-        print("Não pode posicionar o navio aqui!")
+        print("Posição Invalida!")
         return false
       end      
     end
